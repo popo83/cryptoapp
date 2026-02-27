@@ -1,27 +1,27 @@
-# 🔐 CryptoApp
+# CryptoApp
 
-A powerful macOS app for text and file encryption, built with SwiftUI and Apple's CryptoKit framework.
+CryptoApp is a powerful macOS application designed for secure text and file encryption, leveraging SwiftUI and Apple's CryptoKit framework for modern cryptography.
 
 ## Features
 
-- **AES Encryption** — Encrypt and decrypt text using AES-GCM (256-bit)
-- **SHA Hashing** — Generate SHA256 and SHA512 hashes
-- **Digital Signatures** — Sign and verify messages with ECDSA (P-256)
-- **File Encryption** — Encrypt and decrypt files with AES
-- **QR Code Generator** — Export encrypted output as QR code
-- **History** — Track all operations with timestamps
-- **Keychain** — Save and load keys securely from macOS Keychain
-- **Share** — Share output via native macOS sharing panel
-- **Dark Mode** — Automatic light/dark theme support
+- **AES Encryption/Decryption:** Securely encrypt and decrypt text using AES-GCM with 256-bit keys.
+- **SHA Hashing:** Generate SHA256 and SHA512 hashes for data integrity.
+- **Digital Signatures:** Create and verify digital signatures with ECDSA (P-256).
+- **File Encryption/Decryption:** Encrypt and decrypt files using AES.
+- **QR Code Generation:** Export encrypted output as QR codes for easy sharing.
+- **Operation History:** Track all cryptographic operations with timestamps.
+- **Keychain Integration:** Save and load encryption keys securely with macOS Keychain.
+- **Dark Mode Support:** Automatic theme switching for light/dark modes.
+- **Native Share Sheet:** Easily share outputs using macOS's native sharing.
 
 ## Requirements
 
-- macOS 13.0+
-- Xcode 15+
+- macOS 13.0 or later
+- Xcode 15 or later
 
 ## Installation
 
-### From Source
+Clone the repository and generate the Xcode project using XcodeGen:
 
 ```bash
 git clone https://github.com/popo83/cryptoapp.git
@@ -30,52 +30,40 @@ xcodegen generate
 open CryptoApp.xcodeproj
 ```
 
-Then build and run with **Cmd + R** in Xcode.
-
-### Prerequisites
-
-Install XcodeGen if not already installed:
-
-```bash
-brew install xcodegen
-```
+Then build and run the app in Xcode.
 
 ## Usage
 
 ### AES Encryption
-1. Select **AES** mode
-2. Click **Genera** to generate a key (or load from Keychain)
-3. Enter your text
-4. Click **Crittografa** to encrypt or **Decrittografa** to decrypt
 
-### Hashing
-1. Select **SHA256** or **SHA512** mode
-2. Enter your text
-3. Click **Hash**
+1. Select AES mode.
+2. Generate or load a base64-encoded AES key.
+3. Input your plaintext.
+4. Encrypt or decrypt with the buttons provided.
 
-### Digital Signature
-1. Go to **Firma** tab
-2. Click **Genera Keypair** to create ECDSA keys
-3. Enter text and click **Firma** to sign
-4. Click **Verifica** to verify the signature
+### SHA Hashing
+
+1. Select SHA256 or SHA512 mode.
+2. Input your data.
+3. Click Hash to generate the hash.
+
+### Digital Signatures
+
+1. Generate an ECDSA keypair.
+2. Input the message to sign.
+3. Sign the message.
+4. Verify existing signatures.
 
 ### File Encryption
-1. Go to **File** tab
-2. Generate or enter an AES key
-3. Click **Seleziona File** to choose a file
-4. Click **Cifra File** or **Decifra File**
 
-## Technologies
-
-- **SwiftUI** — Modern declarative UI
-- **CryptoKit** — Apple's native cryptography framework
-- **Security framework** — Keychain integration
-- **CoreImage** — QR code generation
+1. Generate or provide AES key.
+2. Select a file.
+3. Encrypt or decrypt the file.
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
+This project is MIT licensed.
 
 ## Author
 
-Built with ❤️ and OpenClaw AI 🦞
+Developed with ❤️ and OpenClaw AI 🦞
