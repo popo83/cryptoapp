@@ -65,5 +65,4 @@ Then build and run the app in Xcode.
 This project is MIT licensed.
 
 ## Author
-
-Developed with ❤️ and OpenClaw AI 🦞
+J4K08 
