@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MainTabBarController">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="MainTabBar">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTabBarController" id="MainTabBarController" customClass="MainTabBarController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TabBar">
+                        <rect key="frame" x="0.0" y="796" width="393" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="EncryptNavController" kind="relationship" relationship="viewControllers" id="EncryptTab"/>
+                        <segue destination="SignatureNavController" kind="relationship" relationship="viewControllers" id="SignatureTab"/>
+                        <segue destination="FileNavController" kind="relationship" relationship="viewControllers" id="FileTab"/>
+                        <segue destination="HistoryNavController" kind="relationship" relationship="viewControllers" id="HistoryTab"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TabBarFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Encrypt-->
+        <scene sceneID="EncryptNav">
+            <objects>
+                <navigationController storyboardIdentifier="EncryptNavController" id="EncryptNavController" customClass="EncryptViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Encrypt" image="lock.fill" id="EncryptTabItem"/>
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="EncryptNavBar">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="EncryptViewController" kind="relationship" relationship="rootViewController" id="EncryptRoot"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EncryptNavFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="-200"/>
+        </scene>
+        <!--Encrypt-->
+        <scene sceneID="EncryptScene">
+            <objects>
+                <viewController storyboardIdentifier="EncryptViewController" id="EncryptViewController" customClass="EncryptViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EncryptView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="EncryptSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Encrypt" id="EncryptNavItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EncryptFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="-200"/>
+        </scene>
+        <!--Signature-->
+        <scene sceneID="SignatureNav">
+            <objects>
+                <navigationController storyboardIdentifier="SignatureNavController" id="SignatureNavController" customClass="SignatureViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Signature" image="pencil.line" id="SignatureTabItem"/>
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="SignatureNavBar">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="SignatureViewController" kind="relationship" relationship="rootViewController" id="SignatureRoot"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SignatureNavFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="200"/>
+        </scene>
+        <!--Signature-->
+        <scene sceneID="SignatureScene">
+            <objects>
+                <viewController storyboardIdentifier="SignatureViewController" id="SignatureViewController" customClass="SignatureViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SignatureView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="SignatureSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Signature" id="SignatureNavItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SignatureFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="200"/>
+        </scene>
+        <!--File-->
+        <scene sceneID="FileNav">
+            <objects>
+                <navigationController storyboardIdentifier="FileNavController" id="FileNavController" customClass="FileViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="File" image="doc.fill" id="FileTabItem"/>
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="FileNavBar">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FileViewController" kind="relationship" relationship="rootViewController" id="FileRoot"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FileNavFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="600"/>
+        </scene>
+        <!--File-->
+        <scene sceneID="FileScene">
+            <objects>
+                <viewController storyboardIdentifier="FileViewController" id="FileViewController" customClass="FileViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FileView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="FileSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="File" id="FileNavItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FileFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="600"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="HistoryNav">
+            <objects>
+                <navigationController storyboardIdentifier="HistoryNavController" id="HistoryNavController" customClass="HistoryViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" image="clock.fill" id="HistoryTabItem"/>
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="HistoryNavBar">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HistoryViewController" kind="relationship" relationship="rootViewController" id="HistoryRoot"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HistoryNavFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="1000"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="HistoryScene">
+            <objects>
+                <viewController storyboardIdentifier="HistoryViewController" id="HistoryViewController" customClass="HistoryViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HistoryView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="HistorySafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="History" id="HistoryNavItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HistoryFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="1000"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="clock.fill" width="128" height="128"/>
+        <image name="doc.fill" width="128" height="128"/>
+        <image name="lock.fill" width="128" height="128"/>
+        <image name="pencil.line" width="128" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

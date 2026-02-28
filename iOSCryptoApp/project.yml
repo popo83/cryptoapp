@@ -1,0 +1,53 @@
+name: iOSCryptoApp
+
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "16.0"
+
+targets:
+  iOSCryptoApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: AppDelegate.swift
+      - path: AuthenticationViewController.swift
+      - path: MainTabBarController.swift
+      - path: EncryptViewController.swift
+      - path: SignatureViewController.swift
+      - path: FileViewController.swift
+      - path: HistoryViewController.swift
+      - path: KeychainHelper.swift
+      - path: CryptoAES.swift
+      - path: Main.storyboard
+      - path: LaunchScreen.storyboard
+      - path: Assets.xcassets
+    info:
+      path: Info.plist
+      properties:
+        CFBundleDisplayName: CryptoApp
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        UILaunchScreen: {}
+        NSFaceIDUsageDescription: CryptoApp uses Face ID to protect access to your encryption keys.
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yourname.cryptoapp
+        SWIFT_VERSION: 5.9
+        ALWAYS_SEARCH_USER_PATHS: NO
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_ENTITLEMENTS: ""
+
+schemes:
+  iOSCryptoApp:
+    build:
+      targets:
+        iOSCryptoApp: all
+    run:
+      config: Debug
