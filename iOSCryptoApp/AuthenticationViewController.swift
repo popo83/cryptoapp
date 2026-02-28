@@ -9,10 +9,31 @@ class AuthenticationViewController: UIViewController {
     private let faceIDButton = UIButton(type: .system)
     private let touchIDButton = UIButton(type: .system)
     private let errorLabel = UILabel()
+    private var tapCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        // Secret: 5 taps on title to reset tutorial
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(titleTapped))
+        titleLabel.isUserInteractionEnabled = true
+        titleLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func titleTapped() {
+        tapCount += 1
+        if tapCount >= 5 {
+            tapCount = 0
+            UserDefaults.standard.set(false, forKey: "tutorialCompleted")
+            showTutorial()
+        }
+    }
+    
+    func showTutorial() {
+        let tutorialVC = TutorialViewController()
+        tutorialVC.modalPresentationStyle = .fullScreen
+        present(tutorialVC, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

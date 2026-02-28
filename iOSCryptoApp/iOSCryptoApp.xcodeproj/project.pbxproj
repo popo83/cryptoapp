@@ -11,11 +11,13 @@
 		55653C15FB03BA6C56044DA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5B0943ABF945F04934AEB /* AppDelegate.swift */; };
 		57E9D8546E70AA9987203683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCDEF62E15B75DF0BD87842D /* Assets.xcassets */; };
 		5D4AB44E08DFDF2C4F5C911D /* CryptoAES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0963CAEEC37C3E893A617B5E /* CryptoAES.swift */; };
+		5FC32A4B283AED20A422367E /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0280D48122DC21DD9C5E9D /* TutorialViewController.swift */; };
 		6119D7463A5E29B4DE4F29AA /* EncryptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB5B99AE67CE238AC5C657 /* EncryptViewController.swift */; };
 		6E1909C3467D26DA5A1D5533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AB8C301C7253BC6FD3F628C /* Main.storyboard */; };
 		71EDBC239C598D7568A48E2E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C2193218E51672A71187F /* HistoryViewController.swift */; };
 		8F5395CC6ADCA9E488ECE376 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E7A899DF0E8A3084CF923 /* KeychainHelper.swift */; };
 		C6C9FE35F4EDBB0A78864F56 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07786CED26C306F5835965CE /* AuthenticationViewController.swift */; };
+		D337A6BE09CE5CD0A0A19F8D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EAAD5043846F19ECB5FB44 /* SettingsViewController.swift */; };
 		E298F0252FC758BC77B7AE88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAA290689C17EBCC4231CAD6 /* LaunchScreen.storyboard */; };
 		E7ABBC9BD093A1F35B7A8964 /* FileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A218673DBF4FB58A6E3036E /* FileViewController.swift */; };
 		FFEC000BE45552A147D1176F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5721F8D58115359248E223 /* MainTabBarController.swift */; };
@@ -25,10 +27,12 @@
 		045C2193218E51672A71187F /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		04CB5B99AE67CE238AC5C657 /* EncryptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptViewController.swift; sourceTree = "<group>"; };
 		07786CED26C306F5835965CE /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		08EAAD5043846F19ECB5FB44 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0963CAEEC37C3E893A617B5E /* CryptoAES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAES.swift; sourceTree = "<group>"; };
 		0A218673DBF4FB58A6E3036E /* FileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
 		0AB8C301C7253BC6FD3F628C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0EB43F65E284109E40E5C36D /* iOSCryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E0280D48122DC21DD9C5E9D /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		4B5721F8D58115359248E223 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		BAA290689C17EBCC4231CAD6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC5AEFEEAB26D04340092B4D /* SignatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +64,9 @@
 				BAA290689C17EBCC4231CAD6 /* LaunchScreen.storyboard */,
 				0AB8C301C7253BC6FD3F628C /* Main.storyboard */,
 				4B5721F8D58115359248E223 /* MainTabBarController.swift */,
+				08EAAD5043846F19ECB5FB44 /* SettingsViewController.swift */,
 				BC5AEFEEAB26D04340092B4D /* SignatureViewController.swift */,
+				2E0280D48122DC21DD9C5E9D /* TutorialViewController.swift */,
 				C46B38E7A907298CCDEF1106 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -144,7 +150,9 @@
 				71EDBC239C598D7568A48E2E /* HistoryViewController.swift in Sources */,
 				8F5395CC6ADCA9E488ECE376 /* KeychainHelper.swift in Sources */,
 				FFEC000BE45552A147D1176F /* MainTabBarController.swift in Sources */,
+				D337A6BE09CE5CD0A0A19F8D /* SettingsViewController.swift in Sources */,
 				0DA9773D2752847F2CAEB0AA /* SignatureViewController.swift in Sources */,
+				5FC32A4B283AED20A422367E /* TutorialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

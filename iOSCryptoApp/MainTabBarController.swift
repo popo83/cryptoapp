@@ -20,8 +20,8 @@ class MainTabBarController: UITabBarController {
                 items[2].title = "File"
             }
             if items.count > 3 {
-                items[3].image = UIImage(systemName: "clock")
-                items[3].title = "History"
+                items[3].image = UIImage(systemName: "gearshape.fill")
+                items[3].title = "Settings"
             }
         }
     }

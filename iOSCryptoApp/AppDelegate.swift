@@ -14,8 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.overrideUserInterfaceStyle = .unspecified
         }
         
-        let authVC = AuthenticationViewController()
-        window?.rootViewController = authVC
+        // Show tutorial on first launch
+        let tutorialCompleted = UserDefaults.standard.bool(forKey: "tutorialCompleted")
+        
+        if !tutorialCompleted {
+            let tutorialVC = TutorialViewController()
+            tutorialVC.modalPresentationStyle = .fullScreen
+            window?.rootViewController = tutorialVC
+        } else {
+            let authVC = AuthenticationViewController()
+            window?.rootViewController = authVC
+        }
+        
         window?.makeKeyAndVisible()
         
         return true

@@ -21,7 +21,7 @@
                         <segue destination="EncryptNavController" kind="relationship" relationship="viewControllers" id="EncryptTab"/>
                         <segue destination="SignatureNavController" kind="relationship" relationship="viewControllers" id="SignatureTab"/>
                         <segue destination="FileNavController" kind="relationship" relationship="viewControllers" id="FileTab"/>
-                        <segue destination="HistoryNavController" kind="relationship" relationship="viewControllers" id="HistoryTab"/>
+                        <segue destination="SettingsNavController" kind="relationship" relationship="viewControllers" id="SettingsTab"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TabBarFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -32,7 +32,7 @@
         <scene sceneID="EncryptNav">
             <objects>
                 <navigationController storyboardIdentifier="EncryptNavController" id="EncryptNavController" customClass="EncryptViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Encrypt" image="lock.shield" id="EncryptTabItem"/>
+                    <tabBarItem key="tabBarItem" title="Encrypt" image="lock.fill" id="EncryptTabItem"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="EncryptNavBar">
                         <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -65,7 +65,7 @@
         <scene sceneID="SignatureNav">
             <objects>
                 <navigationController storyboardIdentifier="SignatureNavController" id="SignatureNavController" customClass="SignatureViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Signature" image="signature" id="SignatureTabItem"/>
+                    <tabBarItem key="tabBarItem" title="Signature" image="pencil.line" id="SignatureTabItem"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="SignatureNavBar">
                         <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -98,7 +98,7 @@
         <scene sceneID="FileNav">
             <objects>
                 <navigationController storyboardIdentifier="FileNavController" id="FileNavController" customClass="FileViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="File" image="doc.lock" id="FileTabItem"/>
+                    <tabBarItem key="tabBarItem" title="File" image="doc.fill" id="FileTabItem"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="FileNavBar">
                         <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -127,45 +127,45 @@
             </objects>
             <point key="canvasLocation" x="800" y="600"/>
         </scene>
-        <!--History-->
-        <scene sceneID="HistoryNav">
+        <!--Settings-->
+        <scene sceneID="SettingsNav">
             <objects>
-                <navigationController storyboardIdentifier="HistoryNavController" id="HistoryNavController" customClass="HistoryViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" image="clock.arrow.circlepath" id="HistoryTabItem"/>
-                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="HistoryNavBar">
+                <navigationController storyboardIdentifier="SettingsNavController" id="SettingsNavController" customClass="SettingsViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" id="SettingsTabItem"/>
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="SettingsNavBar">
                         <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="HistoryViewController" kind="relationship" relationship="rootViewController" id="HistoryRoot"/>
+                        <segue destination="SettingsViewController" kind="relationship" relationship="rootViewController" id="SettingsRoot"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HistoryNavFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SettingsNavFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="400" y="1000"/>
         </scene>
-        <!--History-->
-        <scene sceneID="HistoryScene">
+        <!--Settings-->
+        <scene sceneID="SettingsScene">
             <objects>
-                <viewController storyboardIdentifier="HistoryViewController" id="HistoryViewController" customClass="HistoryViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HistoryView">
+                <viewController storyboardIdentifier="SettingsViewController" id="SettingsViewController" customClass="SettingsViewController" customModule="iOSCryptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SettingsView">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="HistorySafeArea"/>
+                        <viewLayoutGuide key="safeArea" id="SettingsSafeArea"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="History" id="HistoryNavItem"/>
+                    <navigationItem key="navigationItem" title="Settings" id="SettingsNavItem"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HistoryFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SettingsFirst" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="800" y="1000"/>
         </scene>
     </scenes>
     <resources>
-        <image name="clock.arrow.circlepath" width="128" height="128"/>
-        <image name="doc.lock" width="128" height="128"/>
-        <image name="lock.shield" width="128" height="128"/>
-        <image name="signature" width="128" height="128"/>
+        <image name="gearshape.fill" width="128" height="128"/>
+        <image name="doc.fill" width="128" height="128"/>
+        <image name="lock.fill" width="128" height="128"/>
+        <image name="pencil.line" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -17,8 +17,10 @@ targets:
       - path: SignatureViewController.swift
       - path: FileViewController.swift
       - path: HistoryViewController.swift
+      - path: SettingsViewController.swift
       - path: KeychainHelper.swift
       - path: CryptoAES.swift
+      - path: TutorialViewController.swift
       - path: Main.storyboard
       - path: LaunchScreen.storyboard
       - path: Assets.xcassets
