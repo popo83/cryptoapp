@@ -115,10 +115,6 @@ class SignatureViewController: UIViewController {
         signatureTextView = createTextView()
         contentView.addSubview(signatureTextView)
         
-        let signatureCopyBtn = createSmallButton(image: "doc.on.doc", title: "Copy")
-        signatureCopyBtn.addTarget(self, action: #selector(copySignature), for: .touchUpInside)
-        contentView.addSubview(signatureCopyBtn)
-        
         let signatureShareBtn = createSmallButton(image: "square.and.arrow.up", title: "Share")
         signatureShareBtn.addTarget(self, action: #selector(shareSignature), for: .touchUpInside)
         contentView.addSubview(signatureShareBtn)
@@ -205,17 +201,11 @@ class SignatureViewController: UIViewController {
             signatureTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             signatureTextView.heightAnchor.constraint(equalToConstant: 100),
             
-            signatureCopyBtn.topAnchor.constraint(equalTo: signatureTextView.bottomAnchor, constant: 8),
-            signatureCopyBtn.trailingAnchor.constraint(equalTo: signatureShareBtn.leadingAnchor, constant: -8),
-            signatureCopyBtn.widthAnchor.constraint(equalToConstant: 80),
-            signatureCopyBtn.heightAnchor.constraint(equalToConstant: 36),
-            
             signatureShareBtn.topAnchor.constraint(equalTo: signatureTextView.bottomAnchor, constant: 8),
             signatureShareBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            signatureShareBtn.widthAnchor.constraint(equalToConstant: 80),
+            signatureShareBtn.widthAnchor.constraint(equalToConstant: 150),
             signatureShareBtn.heightAnchor.constraint(equalToConstant: 36),
             signatureShareBtn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
-            signatureTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
         ])
     }
     

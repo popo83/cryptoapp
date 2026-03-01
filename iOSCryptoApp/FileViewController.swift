@@ -353,6 +353,7 @@ class FileViewController: UIViewController, UIDocumentPickerDelegate {
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let outURL = documentsURL.appendingPathComponent(url.deletingPathExtension().lastPathComponent + ".enc")
             try combined.write(to: outURL)
+            saveHistory(operation: "Encrypt File", keyName: keyNameTextField.text ?? "Unknown")
             showAlert(title: "Success", message: "File encrypted:\n\(outURL.lastPathComponent)")
         } catch {
             showAlert(title: "Error", message: error.localizedDescription)
@@ -386,6 +387,7 @@ class FileViewController: UIViewController, UIDocumentPickerDelegate {
             let originalName = url.deletingPathExtension().lastPathComponent
             let outURL = documentsURL.appendingPathComponent(originalName + "_decrypted")
             try decrypted.write(to: outURL)
+            saveHistory(operation: "Decrypt File", keyName: keyNameTextField.text ?? "Unknown")
             showAlert(title: "Success", message: "File decrypted:\n\(outURL.lastPathComponent)")
         } catch {
             showAlert(title: "Error", message: error.localizedDescription)
@@ -396,6 +398,16 @@ class FileViewController: UIViewController, UIDocumentPickerDelegate {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    func saveHistory(operation: String, keyName: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let timestamp = dateFormatter.string(from: Date())
+        let entry = "\(operation) - \(keyName)"
+        // Save as: CryptoApp_History_Encrypt-keyName-timestamp
+        let account = "CryptoApp_History_\(operation)_\(keyName)_\(timestamp)"
+        KeychainHelper.saveKey(entry, forAccount: account)
     }
     
     @objc func viewSavedFiles() {

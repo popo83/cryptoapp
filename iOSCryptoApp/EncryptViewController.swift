@@ -382,6 +382,7 @@ class EncryptViewController: UIViewController {
         
         do {
             outputTextView.text = try CryptoAES.encrypt(text, key: key)
+            saveHistory(operation: "Encrypt", keyName: currentKeyName ?? "Unknown")
         } catch {
             outputTextView.text = "Error: \(error.localizedDescription)"
         }
@@ -393,9 +394,20 @@ class EncryptViewController: UIViewController {
         
         do {
             outputTextView.text = try CryptoAES.decrypt(text, key: key)
+            saveHistory(operation: "Decrypt", keyName: currentKeyName ?? "Unknown")
         } catch {
             outputTextView.text = "Error: \(error.localizedDescription)"
         }
+    }
+    
+    func saveHistory(operation: String, keyName: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let timestamp = dateFormatter.string(from: Date())
+        let entry = "\(operation) - \(keyName)"
+        // Save as: CryptoApp_History_Encrypt-keyName-timestamp
+        let account = "CryptoApp_History_\(operation)_\(keyName)_\(timestamp)"
+        KeychainHelper.saveKey(entry, forAccount: account)
     }
     
     @objc func shareOutput() {
