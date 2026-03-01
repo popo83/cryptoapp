@@ -10,7 +10,7 @@ class TutorialViewController: UIViewController {
     var pages: [(title: String, description: String, icon: String)] = [
         ("🔐 Generate Key", "Tap 'Generate' to create a new encryption key. Give it a name and save it securely in your device.", "wand.and.stars"),
         ("🔒 Encrypt", "Enter your text, select your key, then tap 'Encrypt'. Share or copy the encrypted result.", "lock.fill"),
-        ("✍️ Sign", "Create digital signatures to verify message authenticity. Use your private key.", "signature"),
+        ("✍️ Digital Signature", "Create a key pair: Private Key (keep secret) + Public Key (share). Sign messages with your private key. Others verify with your public key.", "signature"),
         ("📁 Files", "Encrypt and decrypt files securely. Files are processed locally on your device.", "doc.fill"),
         ("🔑 Security", "Your keys are stored securely in the iOS Keychain. Face ID/Touch ID protects access.", "faceid")
     ]

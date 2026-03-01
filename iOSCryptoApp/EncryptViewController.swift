@@ -12,7 +12,6 @@ class EncryptViewController: UIViewController {
     var outputTextView: UITextView!
     var savedKeysLabel: UILabel!
     var savedKeysStackView: UIStackView!
-    var currentKeyLabel: UILabel!
     
     var savedKeyNames: [String] = []
     var currentKeyName: String?
@@ -70,10 +69,6 @@ class EncryptViewController: UIViewController {
         
         savedKeysStackView = createHorizontalStack()
         contentView.addSubview(savedKeysStackView)
-        
-        currentKeyLabel = createCaption("Current key:")
-        currentKeyLabel.numberOfLines = 0
-        contentView.addSubview(currentKeyLabel)
         
         let divider1 = createDivider()
         contentView.addSubview(divider1)
@@ -152,11 +147,7 @@ class EncryptViewController: UIViewController {
             savedKeysStackView.topAnchor.constraint(equalTo: savedKeysLabel.bottomAnchor, constant: 8),
             savedKeysStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             
-            currentKeyLabel.topAnchor.constraint(equalTo: savedKeysStackView.bottomAnchor, constant: 12),
-            currentKeyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            currentKeyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            
-            divider1.topAnchor.constraint(equalTo: currentKeyLabel.bottomAnchor, constant: 20),
+            divider1.topAnchor.constraint(equalTo: savedKeysStackView.bottomAnchor, constant: 20),
             divider1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             divider1.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             divider1.heightAnchor.constraint(equalToConstant: 1),

@@ -154,7 +154,19 @@ class FileViewController: UIViewController, UIDocumentPickerDelegate {
             actionStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             actionStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             actionStack.heightAnchor.constraint(equalToConstant: 50),
-            actionStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
+        ])
+        
+        // View saved files button
+        let viewFilesBtn = createButton(title: "View Saved Files", image: "folder", style: .secondary)
+        viewFilesBtn.addTarget(self, action: #selector(viewSavedFiles), for: .touchUpInside)
+        contentView.addSubview(viewFilesBtn)
+        
+        NSLayoutConstraint.activate([
+            viewFilesBtn.topAnchor.constraint(equalTo: actionStack.bottomAnchor, constant: 16),
+            viewFilesBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            viewFilesBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            viewFilesBtn.heightAnchor.constraint(equalToConstant: 50),
+            viewFilesBtn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
         ])
     }
     
@@ -278,6 +290,18 @@ class FileViewController: UIViewController, UIDocumentPickerDelegate {
         guard let name = sender.title(for: .normal),
               let key = KeychainHelper.loadKey(forAccount: "CryptoApp_AES_\(name)") else { return }
         keyTextField.text = key
+        
+        // Reset all buttons to default color
+        for view in savedKeysStackView.arrangedSubviews {
+            if let btn = view as? UIButton {
+                btn.backgroundColor = .secondarySystemBackground
+                btn.setTitleColor(.label, for: .normal)
+            }
+        }
+        
+        // Highlight selected button in green
+        sender.backgroundColor = .systemGreen
+        sender.setTitleColor(.white, for: .normal)
     }
     
     @objc func selectFile() {
@@ -289,15 +313,33 @@ class FileViewController: UIViewController, UIDocumentPickerDelegate {
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let url = urls.first else { return }
+        
+        // Start accessing security-scoped resource
+        let accessing = url.startAccessingSecurityScopedResource()
+        
         selectedFileURL = url
         fileLabel.text = url.lastPathComponent
         fileLabel.textColor = .label
+        
+        // Store if we need to stop accessing
+        if accessing {
+            UserDefaults.standard.set(true, forKey: "fileAccessNeedsStop")
+        }
     }
     
     @objc func encryptFile() {
         guard let url = selectedFileURL, let key = keyTextField.text, !key.isEmpty else {
             showAlert(title: "Error", message: "Select file and key")
             return
+        }
+        
+        // Start accessing security-scoped resource
+        let accessing = url.startAccessingSecurityScopedResource()
+        
+        defer {
+            if accessing {
+                url.stopAccessingSecurityScopedResource()
+            }
         }
         
         do {
@@ -307,7 +349,9 @@ class FileViewController: UIViewController, UIDocumentPickerDelegate {
             let sealedBox = try AES.GCM.seal(data, using: symmetricKey)
             guard let combined = sealedBox.combined else { return }
             
-            let outURL = url.deletingPathExtension().appendingPathExtension("enc")
+            // Copy to Documents folder
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let outURL = documentsURL.appendingPathComponent(url.deletingPathExtension().lastPathComponent + ".enc")
             try combined.write(to: outURL)
             showAlert(title: "Success", message: "File encrypted:\n\(outURL.lastPathComponent)")
         } catch {
@@ -321,6 +365,15 @@ class FileViewController: UIViewController, UIDocumentPickerDelegate {
             return
         }
         
+        // Start accessing security-scoped resource
+        let accessing = url.startAccessingSecurityScopedResource()
+        
+        defer {
+            if accessing {
+                url.stopAccessingSecurityScopedResource()
+            }
+        }
+        
         do {
             let data = try Data(contentsOf: url)
             guard let keyData = Data(base64Encoded: key) else { return }
@@ -328,7 +381,10 @@ class FileViewController: UIViewController, UIDocumentPickerDelegate {
             let sealedBox = try AES.GCM.SealedBox(combined: data)
             let decrypted = try AES.GCM.open(sealedBox, using: symmetricKey)
             
-            let outURL = url.deletingPathExtension().appendingPathExtension("dec")
+            // Copy to Documents folder
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let originalName = url.deletingPathExtension().lastPathComponent
+            let outURL = documentsURL.appendingPathComponent(originalName + "_decrypted")
             try decrypted.write(to: outURL)
             showAlert(title: "Success", message: "File decrypted:\n\(outURL.lastPathComponent)")
         } catch {
@@ -340,5 +396,49 @@ class FileViewController: UIViewController, UIDocumentPickerDelegate {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    @objc func viewSavedFiles() {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        do {
+            let files = try FileManager.default.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
+            let savedFiles = files.filter { $0.pathExtension == "enc" || $0.pathExtension == "decrypted" }
+            
+            if savedFiles.isEmpty {
+                showAlert(title: "No Files", message: "No encrypted/decrypted files found in Documents folder.")
+                return
+            }
+            
+            let alert = UIAlertController(title: "Saved Files", message: "Select a file to share:", preferredStyle: .actionSheet)
+            
+            for file in savedFiles {
+                alert.addAction(UIAlertAction(title: file.lastPathComponent, style: .default) { [weak self] _ in
+                    self?.shareFile(file)
+                })
+            }
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            
+            if let popover = alert.popoverPresentationController {
+                popover.sourceView = view
+                popover.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
+            }
+            
+            present(alert, animated: true)
+        } catch {
+            showAlert(title: "Error", message: error.localizedDescription)
+        }
+    }
+    
+    func shareFile(_ url: URL) {
+        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        
+        if let popover = activityVC.popoverPresentationController {
+            popover.sourceView = view
+            popover.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
+        }
+        
+        present(activityVC, animated: true)
     }
 }

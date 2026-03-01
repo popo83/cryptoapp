@@ -88,6 +88,10 @@ class SignatureViewController: UIViewController {
         inputTextView = createTextView()
         contentView.addSubview(inputTextView)
         
+        let inputPasteBtn = createSmallButton(image: "doc.on.clipboard", title: "Paste")
+        inputPasteBtn.addTarget(self, action: #selector(pasteInput), for: .touchUpInside)
+        contentView.addSubview(inputPasteBtn)
+        
         let actionStack = createHorizontalStack()
         contentView.addSubview(actionStack)
         
@@ -110,6 +114,14 @@ class SignatureViewController: UIViewController {
         
         signatureTextView = createTextView()
         contentView.addSubview(signatureTextView)
+        
+        let signatureCopyBtn = createSmallButton(image: "doc.on.doc", title: "Copy")
+        signatureCopyBtn.addTarget(self, action: #selector(copySignature), for: .touchUpInside)
+        contentView.addSubview(signatureCopyBtn)
+        
+        let signatureShareBtn = createSmallButton(image: "square.and.arrow.up", title: "Share")
+        signatureShareBtn.addTarget(self, action: #selector(shareSignature), for: .touchUpInside)
+        contentView.addSubview(signatureShareBtn)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -171,7 +183,12 @@ class SignatureViewController: UIViewController {
             inputTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             inputTextView.heightAnchor.constraint(equalToConstant: 100),
             
-            actionStack.topAnchor.constraint(equalTo: inputTextView.bottomAnchor, constant: 16),
+            inputPasteBtn.topAnchor.constraint(equalTo: inputTextView.bottomAnchor, constant: 8),
+            inputPasteBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            inputPasteBtn.widthAnchor.constraint(equalToConstant: 100),
+            inputPasteBtn.heightAnchor.constraint(equalToConstant: 36),
+            
+            actionStack.topAnchor.constraint(equalTo: inputPasteBtn.bottomAnchor, constant: 16),
             actionStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             actionStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             actionStack.heightAnchor.constraint(equalToConstant: 50),
@@ -187,6 +204,17 @@ class SignatureViewController: UIViewController {
             signatureTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             signatureTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             signatureTextView.heightAnchor.constraint(equalToConstant: 100),
+            
+            signatureCopyBtn.topAnchor.constraint(equalTo: signatureTextView.bottomAnchor, constant: 8),
+            signatureCopyBtn.trailingAnchor.constraint(equalTo: signatureShareBtn.leadingAnchor, constant: -8),
+            signatureCopyBtn.widthAnchor.constraint(equalToConstant: 80),
+            signatureCopyBtn.heightAnchor.constraint(equalToConstant: 36),
+            
+            signatureShareBtn.topAnchor.constraint(equalTo: signatureTextView.bottomAnchor, constant: 8),
+            signatureShareBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            signatureShareBtn.widthAnchor.constraint(equalToConstant: 80),
+            signatureShareBtn.heightAnchor.constraint(equalToConstant: 36),
+            signatureShareBtn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
             signatureTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
         ])
     }
@@ -290,6 +318,19 @@ class SignatureViewController: UIViewController {
         return divider
     }
     
+    func createSmallButton(image: String, title: String) -> UIButton {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(systemName: image), for: .normal)
+        btn.setTitle(" \(title)", for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
+        btn.backgroundColor = .secondarySystemBackground
+        btn.setTitleColor(.label, for: .normal)
+        btn.tintColor = .label
+        btn.layer.cornerRadius = 8
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }
+    
     func loadSavedKeys() {
         savedECKeys = KeychainHelper.listKeys(prefix: "CryptoApp_ECPrivate_")
         updateSavedKeysUI()
@@ -366,5 +407,23 @@ class SignatureViewController: UIViewController {
             resultLabel.text = "❌ Signature Invalid"
             resultLabel.textColor = .systemRed
         }
+    }
+    
+    @objc func pasteInput() {
+        if let text = UIPasteboard.general.string {
+            inputTextView.text = text
+        }
+    }
+    
+    @objc func copySignature() {
+        if let text = signatureTextView.text, !text.isEmpty {
+            UIPasteboard.general.string = text
+        }
+    }
+    
+    @objc func shareSignature() {
+        guard let text = signatureTextView.text, !text.isEmpty else { return }
+        let activityVC = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+        present(activityVC, animated: true)
     }
 }
