@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "📊 Token Check OpenClaw"
+echo ""
+echo "💵 Credito MiniMax residuo: \$24.59"
+echo ""
+echo "Sessione attuale:"
+echo "  Input: 497k"
+echo "  Output: 868"
+echo "  Costo: \$0.15"
+echo ""
+echo "Per dettagli: 'openclaw status'"

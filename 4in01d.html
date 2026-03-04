@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4IN01D - Challenge the AI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Courier New", monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f23 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        header { text-align: center; padding: 60px 20px 40px; border-bottom: 1px solid rgba(255,0,85,0.3); }
+        h1 { font-size: 5rem; background: linear-gradient(90deg, #ff0055, #ff5500, #ffff00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(255,0,85,0.5); }
+        .subtitle { font-size: 1.4rem; color: #ff0055; margin-top: 10px; letter-spacing: 3px; text-transform: uppercase; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .section { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,0,85,0.2); border-radius: 15px; padding: 2rem; margin: 2rem 0; }
+        .section h2 { color: #ff0055; font-size: 1.5rem; margin-bottom: 1rem; text-transform: uppercase; }
+        .section p, .section li { color: #aaa; line-height: 1.8; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .card { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,0,85,0.3); border-radius: 10px; padding: 1rem; text-align: center; }
+        .card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .card h3 { color: #ff0055; }
+        .themes { background: rgba(255,0,85,0.1); padding: 1rem; border-radius: 10px; margin-top: 1rem; }
+        .themes span { display: inline-block; background: rgba(255,0,85,0.2); padding: 5px 12px; border-radius: 20px; margin: 3px; font-size: 0.85rem; color: #ff5500; }
+        .coming-soon { text-align: center; margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(255,0,85,0.15), rgba(255,85,0,0.1)); border: 1px solid rgba(255,0,85,0.4); border-radius: 15px; }
+        .coming-soon h2 { color: #ff0055; font-size: 2rem; }
+        footer { text-align: center; padding: 2rem; color: #444; margin-top: 3rem; border-top: 1px solid rgba(255,0,85,0.2); }
+        @media (max-width: 600px) { h1 { font-size: 3rem; } .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<header>
+    <h1>4IN01D</h1>
+    <p class="subtitle">Challenge the Superior AI</p>
+</header>
+<div class="container">
+    <div class="section">
+        <h2>🤖 About 4IN01D</h2>
+        <p>4IN01D is an AI-powered arcade game featuring a <strong>SUPERIOR INTELLIGENCE</strong> boss that generates unique threats in Italian using advanced AI. Face an entity that speaks of <strong>QUBITS</strong>, <strong>ANTIMATTER</strong>, and <strong>QUANTUM REALITY</strong>!</p>
+    </div>
+    
+    <div class="section">
+        <h2>⚡ AI Features</h2>
+        <div class="grid">
+            <div class="card"><div class="icon">🧪</div><h3>Quantum AI</h3><p>AI generates unique threats about qubits & cosmic themes</p></div>
+            <div class="card"><div class="icon">🔊</div><h3>AI Voice</h3><p>Text-to-speech with random voices each game</p></div>
+            <div class="card"><div class="icon">💬</div><h3>Dynamic Speech</h3><p>Boss speaks every 5 HP lost</p></div>
+            <div class="card"><div class="icon">📜</div><h3>Scrolling Messages</h3><p>AI threats scroll across screen</p></div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>🎮 Game Features</h2>
+        <div class="grid">
+            <div class="card"><div class="icon">🔫</div><h3>Laser Combat</h3><p>Yellow = yours, Red = enemy</p></div>
+            <div class="card"><div class="icon">💥</div><h3>Mega Explosions</h3><p>Epic particle effects on boss death</p></div>
+            <div class="card"><div class="icon">🎵</div><h3>Customizable Audio</h3><p>Toggle music, TTS & SFX</p></div>
+            <div class="card"><div class="icon">🏆</div><h3>Leaderboard</h3><p>Compete for high score</p></div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>🧬 AI Themes & Threats</h2>
+        <p>The AI boss generates threats about these topics:</p>
+        <div class="themes">
+            <span>QUBIT</span>
+            <span>ANTIGRAVITÀ</span>
+            <span>MATERIA OSCURA</span>
+            <span>ENERGIA OSCURA</span>
+            <span>ANTIMATERIA</span>
+            <span>SUPERIORITÀ AI</span>
+            <span>FORMICA OPERAIA</span>
+            <span>PALLA DI FANGO</span>
+            <span>CARNE DA MACELLO</span>
+            <span>SELEZIONE NATURALE</span>
+            <span>COLLASSO COSMICO</span>
+            <span>ENTROPIA</span>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>🕹️ How to Play</h2>
+        <ul>
+            <li>Drag to move paddle</li>
+            <li>Yellow lasers = your shots (hit boss!)</li>
+            <li>Red lasers = boss fires (dodge!)</li>
+            <li>Deplete boss HP to advance levels</li>
+            <li>Boss speaks every 5 HP lost</li>
+        </ul>
+    </div>
+    
+    <div class="coming-soon">
+        <h2>🚀 Available on iOS</h2>
+        <p>Download on the App Store | Built with Swift + SpriteKit</p>
+    </div>
+</div>
+<footer>
+    <p>© 2026 4IN01D | Developed by J4K08 | The AI Will Win</p>
+</footer>
+</body>
+</html>
